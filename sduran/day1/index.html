@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo List</title>
+    <style>
+        input, button, li {
+            font-size: 40px;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Steven Duran Todo</h1>
+
+    <input type="text">
+    <button id="add">Add</button>
+    <button id="clear">Clear</button>
+    <ul class="list"></ul>
+
+    <!-- SCRIPTS -->
+    <script>
+        const h1 = document.querySelector('h1');
+        const input = document.querySelector('input');
+        const button = document.getElementById('add');
+        const clear = document.querySelector('#clear')
+        const ul = document.querySelector('.list');
+
+        button.addEventListener('click', addList)
+        input.addEventListener('keydown', function(e){
+            if (e.code === 'Enter') {
+                addList();
+            }
+        })
+
+        // Clears the ul
+        clear.addEventListener('click', function() {
+            ul.innerHTML = "";
+        })
+        // Add what's in the input box to ul
+        function addList() {
+            ul.innerHTML += "<li>" + input.value + "</li>"
+            input.value = "";
+            input.focus();
+        }
+        
+    </script>
 </body>
 </html>
