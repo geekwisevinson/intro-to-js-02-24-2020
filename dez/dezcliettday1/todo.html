@@ -22,21 +22,16 @@
         const input=document.querySelector ('input');;
         const button=document.querySelector ('button')
         const ul=document.querySelector ('list');
-        console.log(h1,input,button, ul);
 
-        button.addEventListener ('click', function () {
-            console.log(input.value);
-            console.dir(ul);
-            ul.innerHTML += <li> '+ input.value +' </li>
-        });
-        input.addEventListener('keydown', function (e);{
-            if (e.code === 'enter') {
-                console.log(e);
-                addTodo():
+        button.addEventListener ('click', addTodo );
+        input.addEventListener ('keydown', function (e) {
+            if (e.code === 'Enter') {
+                addTodo();
             }
+        });
+        function addTodo() {
+            document.body.style.backgroundColor = input.value;
         }
-
-        )
     </script>
 </body>
 </html>
