@@ -14,7 +14,7 @@
     </style>
     <input type="text">
     <button>ADD</button>
-    <ul></ul>
+    <ul class="list"></ul>
     <script>
         const h1 = document.querySelector('h1');
         const input = document.querySelector('input');
@@ -27,7 +27,7 @@
                 addTodo();
             }
         });
-
+        // Functions do stuff
         function addTodo(){
             document.body.style.backgroundColor = input.value;
             ul.innerHTML += '<li> ' + input.value + '</li>';
