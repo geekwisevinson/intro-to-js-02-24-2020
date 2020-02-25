@@ -1,5 +1,143 @@
 [
     {
+        "name": "Carlos",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./Carlos",
+        "folders": [
+            {
+                "name": "index.html",
+                "isDirectory": false,
+                "isFile": true,
+                "level": 2,
+                "path": "./Carlos/index.html",
+                "type": "html"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "Alan",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./Alan",
+        "folders": [
+            {
+                "name": "Day1",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./Alan/Day1",
+                "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./Alan/Day1/index.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "Dejiah",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./Dejiah",
+        "folders": [
+            {
+                "name": "Day one",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./Dejiah/Day one",
+                "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./Dejiah/Day one/index.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "Michelle",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./Michelle",
+        "folders": [
+            {
+                "name": "index.html",
+                "isDirectory": false,
+                "isFile": true,
+                "level": 2,
+                "path": "./Michelle/index.html",
+                "type": "html"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "Projects",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./Projects",
+        "folders": [
+            {
+                "name": "dezcliettday1",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./Projects/dezcliettday1",
+                "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./Projects/dezcliettday1/index.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "VincentRjr",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./VincentRjr",
+        "folders": [
+            {
+                "name": "index.html",
+                "isDirectory": false,
+                "isFile": true,
+                "level": 2,
+                "path": "./VincentRjr/index.html",
+                "type": "html"
+            }
+        ],
+        "type": "folder"
+    },
+    {
         "name": "vinson",
         "isDirectory": true,
         "isFile": false,
@@ -13,6 +151,14 @@
                 "level": 2,
                 "path": "./vinson/day1",
                 "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./vinson/day1/index.html",
+                        "type": "html"
+                    },
                     {
                         "name": "welcome.html",
                         "isDirectory": false,
@@ -28,20 +174,88 @@
         "type": "folder"
     },
     {
-        "name": "index.html",
-        "isDirectory": false,
-        "isFile": true,
+        "name": "chris",
+        "isDirectory": true,
+        "isFile": false,
         "level": 1,
-        "path": "./index.html",
-        "type": "html"
+        "path": "./chris",
+        "folders": [
+            {
+                "name": "day1",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./chris/day1",
+                "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./chris/day1/index.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
     },
     {
-        "name": "build-index.js",
-        "isDirectory": false,
-        "isFile": true,
+        "name": "sduran",
+        "isDirectory": true,
+        "isFile": false,
         "level": 1,
-        "path": "./build-index.js",
-        "type": "js"
+        "path": "./sduran",
+        "folders": [
+            {
+                "name": "day1",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./sduran/day1",
+                "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./sduran/day1/index.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "stammj",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./stammj",
+        "folders": [
+            {
+                "name": "day1",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./stammj/day1",
+                "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./stammj/day1/index.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
     },
     {
         "name": "test.json",
@@ -50,5 +264,41 @@
         "level": 1,
         "path": "./test.json",
         "type": "json"
+    },
+    {
+        "name": "tony",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./tony",
+        "folders": [
+            {
+                "name": "day1",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./tony/day1",
+                "folders": [
+                    {
+                        "name": "index.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./tony/day1/index.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "build-index.js",
+        "isDirectory": false,
+        "isFile": true,
+        "level": 1,
+        "path": "./build-index.js",
+        "type": "js"
     }
 ]
