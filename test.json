@@ -1,0 +1,54 @@
+[
+    {
+        "name": "vinson",
+        "isDirectory": true,
+        "isFile": false,
+        "level": 1,
+        "path": "./vinson",
+        "folders": [
+            {
+                "name": "day1",
+                "isDirectory": true,
+                "isFile": false,
+                "level": 2,
+                "path": "./vinson/day1",
+                "folders": [
+                    {
+                        "name": "welcome.html",
+                        "isDirectory": false,
+                        "isFile": true,
+                        "level": 3,
+                        "path": "./vinson/day1/welcome.html",
+                        "type": "html"
+                    }
+                ],
+                "type": "folder"
+            }
+        ],
+        "type": "folder"
+    },
+    {
+        "name": "index.html",
+        "isDirectory": false,
+        "isFile": true,
+        "level": 1,
+        "path": "./index.html",
+        "type": "html"
+    },
+    {
+        "name": "build-index.js",
+        "isDirectory": false,
+        "isFile": true,
+        "level": 1,
+        "path": "./build-index.js",
+        "type": "js"
+    },
+    {
+        "name": "test.json",
+        "isDirectory": false,
+        "isFile": true,
+        "level": 1,
+        "path": "./test.json",
+        "type": "json"
+    }
+]
