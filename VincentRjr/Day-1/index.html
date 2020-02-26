@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input, button, h1 {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo</h1>
+    <input type="text">
+    <button>ADD</button>
+    <ul></ul>
+
+    <script>
+        const h1 = document.querySelector('h1');
+        const input = document.querySelector('input');
+        const button = document.querySelector('button');
+        const ul = document.querySelector('.list');
+
+        button.addEventListener('click', function () {
+            console.log(input.value);
+            console.dir(ul);
+            ul.innerHTML += '<li> ' + input.value + '</li>';
+        });
+        button.addEventListener('click', addToDo );
+        input.addEventListener('keydown', function (e) {
+            if (e.code === 'Enter') {
+                console.log(e);
+                addTodo();
+            }
+        });
+        function addToDo() {
+            ul.innerHTML += '<li> ' + input.value + '</li>';
+            input.value = '',
+        };
+    </script>
+</body>
+</html>
