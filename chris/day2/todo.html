@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo</title>
+</head>
+<body>
+
+    <ul>
+        <li onclick="themeMe(theme1)">theme1</li>
+        <li onclick="themeMe(theme2)">theme2</li>
+    </ul>
+
+    <script>
+
+        const theme1 = ['blue', 'white', 'red'];
+        const theme2 = ['teal', 'black', 'gold'];
+
+        function themeMe (arrayOfColors) {
+            const h1s = document.querySelectorAll('h1');
+            const li = document.querySelectorAll('li');
+            const body = document.querySelectorAll('body');
+
+            h1s.forEach( function (item) {
+                item.style.backgroundColor = arrayOfColors[0];
+                item.style.color = arrayOfColors[1];
+            });
+
+            li.forEach( function (item) {
+                item.style.backgroundColor = arrayOfColors[1];
+                item.style.color = arrayOfColors[0];
+            });
+
+            body.forEach( function (item) {
+                item.style.backgroundColor = arrayOfColors[2];
+                item.style.color = arrayOfColors[1];
+            });
+        }
+
+        createTitle('h1', 'Todo');
+        createInput();
+        createButton();
+        createUL();
+        whatWeKnowHowToDo();
+
+        function whatWeKnowHowToDo() {
+            console.log('create elements: ', 'document.createElements(type)');
+            console.log('put element in its place','ANY-ELEMENT.appendChild(ANY-ELEMENT)');
+            console.log('change text in an element', 'ANY-ELEMENT.innerHTML = "any text" ');
+            console.log('change style', 'ANY-ELEMENT.style.ANY-CSS = ANY-VALUE');
+            console.log('add listeners', 'ANY-ELEMENT.addEventListener(ANY-EVENT, ANY-FUNCTION)');
+            console.log('target or get an element', 'ANY-ELEMENT.querySelector(ANY-CSS-Selector)');
+            console.log('target or get elements', 'ANY-ELEMENT.querySelectorALl(ANY-CSS-Selector)');
+            console.log('delete element', 'ANY-ELEMENT.remove()');
+        }
+
+        function createTitle(type, text) {
+            const h1 = document.createElement('h1');
+            h1.innerHTML = 'Todo';
+            document.body.prepend(h1);
+        }
+        
+        function createInput() {
+            const input = document.createElement('input');
+            document.body.appendChild(input);
+            input.style.fontSize = '40px';
+            input.addEventListener('keydown', function (event) {
+                console.log('event', event);
+                if (event.code === 'Enter') {
+                    whatToDoWhenButtonIsClicked();
+                }
+            });
+        }
+
+        function createButton() {
+            const button = document.createElement('button');
+            document.body.appendChild(button);
+            button.innerHTML = 'ADD';
+            button.style.fontSize = '40px';
+            button.style.backgroundColor = 'lightblue';
+            button.addEventListener('click', whatToDoWhenButtonIsClicked);
+        }
+
+        function whatToDoWhenButtonIsClicked() {
+            const input = document.body.querySelector('input');
+            console.dir(input);
+            console.log(input.value);
+            const value = input.value;
+            input.value = '';
+            createListItem(value);
+        }
+
+        function whatToDoWhenDeleteIsClicked() {
+            console.log('we should delete this', this);
+            this.parentElement.remove();
+        }
+
+        function createUL () {
+            const ulElement = document.createElement('ul');
+            document.body.appendChild(ulElement);
+        }
+
+        function createListItem(text) {
+            if (!text) {
+                return;
+            }
+            console.log('made it');
+            const listItem = document.createElement('li');
+            const ul = document.querySelector('ul');
+            ul.appendChild(listItem);
+            listItem.innerHTML = text;
+            listItem.style.fontSize = '40px';
+            const deleteButton = document.createElement('button');
+            listItem.prepend(deleteButton);
+            listItem.style.margin = '20px';
+            deleteButton.innerHTML = 'X';
+            deleteButton.style.fontSize = '40px';
+            deleteButton.style.backgroundColor = '#aa0000';
+            deleteButton.addEventListener('click', whatToDoWhenDeleteIsClicked);
+        }
+
+    </script>
+    
+</body>
+</html>
