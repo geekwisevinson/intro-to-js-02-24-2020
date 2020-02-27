@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <script>
+        createTitle('h1', 'To Do');
+        createInput();
+        createButton();
+
+
+        function whatWeKnowHowToDo() {
+            console.log('create elements:', 'document.createElements(type)');
+            console.log('put element in its place','ANY-ELEMENT.appendChild(ELEMENT)');
+            console.log('change text in an element', 'ANY-ELEMENT.innerHTML = "any text"')
+        }
+
+
+
+
+    function createButton() {
+        const button = document.createElement('button');
+        document.body.appendChild(button);
+        button.innerHTML = 'ADD';
+        // Button Style
+        button.style.fontSize = '40px';
+        button.style.backgroundColor= 'Lime';
+    }
+    function createInput() {
+        const input = document.createElement('input');
+        document.body.appendChild(input);
+        input.style.fontSize = '40px';
+    }
+    function createTitle(type, text) {
+        const h1 = document.createElement(type);
+        document.body.prepend(h1);
+        h1.innerHTML = text;
+    }
+    </script>
+</body>
+</html>
