@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- SCRIPT -->
+    <script type="text/javascript">
+        const body = document.body;
+        
+        createPage();
+
+        function createPage() {
+            createTitle("h1", "Todo List");
+            createInput();
+            createAddButton();
+            createList();
+        }
+
+        function createAndAdd(type) {
+            element = document.createElement(type);
+            body.appendChild(element);
+            return element;
+        }
+
+        function createTitle(type, text) {
+            const h1 = createAndAdd(type);
+            h1.innerHTML = text;
+        }
+
+        function createInput() {
+            const input = createAndAdd("input");
+            input.style.fontSize = "40px";
+            input.id = "todoInput";
+            input.addEventListener("keydown", function(e) {
+            if (e.code === 'Enter') {
+                addToList();
+            }
+        });
+        }
+
+        function createAddButton() {
+            const button = createAndAdd("button");
+            button.innerHTML = "Add";
+            button.addEventListener("click", addToList);
+
+            // Button Style
+            button.style.fontSize = "40px";
+            button.style.backgroundColor = "black";
+            button.style.color = "white";
+        }
+
+        function createDeleteButton() {
+            const button = document.createElement("button");
+            button.innerHTML = "X";
+            button.style.fontSize = "30px";
+
+            return button;
+        }
+
+        function createList() {
+            const ul = createAndAdd("ul");
+            ul.id = "todoList"
+        }
+
+        function addToList(){
+            const input = document.getElementById("todoInput");
+            if (input.value !== "") {
+                const list = document.getElementById("todoList");
+                const li = document.createElement("li");
+                const button = createDeleteButton();
+
+                li.appendChild(button);
+                list.appendChild(li);
+
+                button.addEventListener('click', function() {
+                    this.parentElement.remove();
+                });
+                
+                li.appendChild(document.createTextNode(input.value));
+                li.style.fontSize = "40px";
+
+                input.value = "";
+            }
+            
+            input.focus();
+        }
+    </script>
+</body>
+</html>

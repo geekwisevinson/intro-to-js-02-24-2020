@@ -17,27 +17,24 @@
     <ul></ul>
 
     <script>
+        // targeting
         const h1 = document.querySelector('h1');
         const input = document.querySelector('input');
         const button = document.querySelector('button');
         const ul = document.querySelector('.list');
-
-        button.addEventListener('click', function () {
-            console.log(input.value);
-            console.dir(ul);
-            ul.innerHTML += '<li> ' + input.value + '</li>';
-        });
-        button.addEventListener('click', addToDo );
+        // listeners
+        button.addEventListener('click', addTodo );
         input.addEventListener('keydown', function (e) {
             if (e.code === 'Enter') {
-                console.log(e);
                 addTodo();
             }
         });
-        function addToDo() {
+        // functions do stuff
+        function addTodo() {
+            document.body.style.backgroundColor = input.value;
             ul.innerHTML += '<li> ' + input.value + '</li>';
-            input.value = '',
-        };
+            input.value = '';
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <style>
+        input, button, li {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Todo</h1>
+<input type="text">
+<button>ADD</button>
+<ul class="list"></ul>
+
+<script>
+    // targeting
+    const h1 = document.querySelector('h1');
+    const input = document.querySelector('input');
+    const button = document.querySelector('button');
+    const ul = document.querySelector('.list');
+    // listeners
+    button.addEventListener('click', addTodo );
+    input.addEventListener('keydown', function (e) {
+        if (e.code === 'Enter') {
+            addTodo();
+        }
+    });
+    // functions do stuff
+    function addTodo() {
+        document.body.style.backgroundColor = input.value;
+        ul.innerHTML += '<li> ' + input.value + '</li>';
+        input.value = '';
+    }
+</script>
+
+</body>
+</html>

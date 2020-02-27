@@ -2,7 +2,6 @@ const fs = require('fs');
 const index = getInfo(['.']);
 const bgUrl = 'http://source.unsplash.com/random/500x500';
 build();
-console.log(JSON.stringify(index, null, 4));
 function build() {
     index.root = getInfo(['.'])
 }
@@ -26,7 +25,7 @@ function getInfo(pathSrc) {
                 item.type = 'folder';
                 return item;
             }
-        }).sort(reOrder).sort(reOrder);
+        }).sort(reOrder).sort(reOrder).sort(reOrder).sort(reOrder).sort(reOrder);
 }
 fs.writeFileSync('./test.json', JSON.stringify(index.root, null, 4) );
 fs.writeFileSync('./index.html', whatToWrite(index.root));
@@ -68,7 +67,6 @@ function createHTMLFolder(item, name) {
 }
 
 function createHTMLFile(item) {
-    console.log(item);
     return `<a class="${item.type}" href="${item.path}">${item.name}</a>`;
 }
 
@@ -82,17 +80,30 @@ function testDirectory(item) {
 }
 
 function reOrder( a, b ) {
+    console.log('a', a);
+    console.log('b', b);
     const good = -1;
     const bad = -good;
     const idk = 0;
     if (a.type === 'folder' && b.type !== 'folder' ) {
+        console.log('a is a folder and b is not');
         return good;
     }
     if (a.type === 'html' && ( b.type !== 'folder' && b.type !== 'html'  )) {
+        console.log('a is a html and b is not above');
         return good;
     }
     if (a.type === 'js' && ( b.type !== 'folder' && b.type !== 'html' && b.type !== 'js'  )) {
+        console.log('a is a js and b is not above');
         return good;
+    }
+    if (a.name.toUpperCase() < b.name.toUpperCase()) {
+        console.log('a is better');
+        return good;
+    }
+    if (a.name.toUpperCase() > b.name.toUpperCase()) {
+        console.log('b is better');
+        return bad;
     }
     return 0;
 }
@@ -212,7 +223,6 @@ function getEndHtml() {
         });
     
         function show(event) {
-            console.log( event);
             // document.querySelectorAll('.show').forEach( item => {
             //     item.classList.remove('show');
             // });
