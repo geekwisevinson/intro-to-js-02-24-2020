@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    <p onclick="themeMe(theme1)">theme1</p>
+    <p onclick="themeMe(theme2)">theme2</p>
+</ul>
+<script>
+
+
+
+    const theme1 = ['blue', 'white', 'red'];
+    const theme2 = ['teal', 'black', 'gold'];
+    themeMe(theme2);
+
+    function themeMe (arrayOfColors) {
+        const h1s = document.querySelectorAll('h1');
+        const li = document.querySelectorAll('li');
+        const body = document.querySelectorAll('body');
+
+        h1s.forEach( function (item) {
+            item.style.backgroundColor = arrayOfColors[0];
+            item.style.color = arrayOfColors[1];
+        });
+        li.forEach( function (item) {
+            item.style.backgroundColor = arrayOfColors[1];
+            item.style.color = arrayOfColors[0];
+        });
+        body.forEach(function (item) {
+            item.style.backgroundColor = arrayOfColors[2];
+            item.style.color = arrayOfColors[1];
+        })
+
+    }
+
+    createTitle('h1', 'Todo');
+    createInput();
+    createButton();
+    createUl();
+    function whatWeKnowHowToDo() {
+        console.log('create elements: ', 'document.createElements(type)');
+        console.log('put element in its place','ANY-ELEMENT.appendChild(ANY-ELEMENT)');
+        console.log('change text in an element', 'ANY-ELEMENT.innerHTML = "any text" ');
+        console.log('change style', 'ANY-ELEMENT.style.ANY-CSS = ANY-VALUE');
+        console.log('add listeners', 'ANY-ELEMENT.addEventListener(ANY-EVENT, ANY-FUNCTION)')
+        console.log('target or get an element', 'ANY-ELEMENT.querySelector(ANY-CSS-Selector)');
+        console.log('target or get elements', 'ANY-ELEMENT.querySelectorAll(ANY-CSS-Selector)');
+        console.log('delete element', 'ANY-ELEMENT.remove()');
+    }
+
+    whatWeKnowHowToDo();
+
+
+    function createButton() {
+        // Button creation
+        const button = document.createElement('button');
+        document.body.appendChild(button);
+        button.innerHTML = 'ADD';
+
+        // Button style
+        button.style.fontSize = '40px';
+        button.style.backgroundColor = 'lime';
+        button.addEventListener('click', whatToDoWhenButtonIsClicked);
+    }
+    function createInput() {
+        const input = document.createElement('input');
+        document.body.appendChild(input);
+        input.style.fontSize = '40px';
+        input.addEventListener('keydown', function (event) {
+            console.log('event', event);
+            if (event.code === 'Enter') {
+                whatToDoWhenButtonIsClicked();
+            }
+        });
+    }
+    function createTitle(type, text) {
+        const h1 = document.createElement(type);
+        document.body.prepend(h1);
+        h1.innerHTML = text;
+    }
+    function whatToDoWhenButtonIsClicked() {
+        const input = document.body.querySelector('input');
+        console.dir(input);
+        console.log(input.value);
+        const value = input.value;
+        input.value = '';
+        createListItem(value);
+    }
+    function whatToDoWhenDeleteIsClicked() {
+        console.log('we should delete this', this);
+        this.parentElement.remove();
+    }
+
+    function createUl() {
+        const ulElement = document.createElement('ul');
+        document.body.appendChild(ulElement);
+    }
+    function createListItem(text) {
+        if (!text) {
+            console.log('made it here instead');
+            return;
+        }
+        console.log('made it!!!');
+        const listItem = document.createElement('li');
+        const ul = document.querySelector('ul');
+        ul.appendChild(listItem);
+        listItem.innerHTML = text;
+        listItem.style.fontSize = '40px';
+        const deleteButton = document.createElement('button');
+        listItem.prepend(deleteButton);
+        listItem.style.margin = '20px';
+        listItem.style.listStyle = 'none';
+        deleteButton.innerHTML = 'X';
+        deleteButton.style.fontSize = '40px';
+        deleteButton.style.margin = '0 20px';
+        deleteButton.addEventListener('click', whatToDoWhenDeleteIsClicked);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

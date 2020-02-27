@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function themeMe(arrayOfColors) {
+            const h1s = document.querySelectorAll('h1');
+            const li = document.querySelectorAll('li');
+            const body = document.querySelectorAll('body');
+            h1s.forEach( function (item) {
+                item.style.backgroundColor = arrayOfColors [0];
+                item.style.color = arrayOfColors [1]
+            })
+            li.forEach( function (item) {
+                item.style.backgroundColor = arrayOfColors [1];
+                item.style.color = arrayOfColors [0]
+            })
+            body.forEach( function (item) {
+                item.style.backgroundColor = arrayOfColors [2];
+                item.style.color = arrayOfColors [0]
+            })
+        }
+        const body = document.body;
+        createUl();
+        createButton ();
+        createInput ();
+        createTitle();
+
+        
+        function createTitle() {
+            const h1 = document.createElement('h1');
+            h1.innerHTML = 'TODO';
+            body.prepend(h1);
+        }
+        function createInput() {
+            const input = document.createElement('input');
+            body.prepend(input);
+            input.style.fontSize='40px';
+            input.addEventListener('keydown', function (event) {
+                console.log('event', event);
+                if (event.code === 'Enter') {
+                    addPress();
+                }
+            });
+        }
+        function createButton() {
+            const button = document.createElement('button');
+            body.prepend(button);
+            button.innerHTML = 'ADD';
+            button.style.fontSize = '40px';
+            button.style.backgroundColor = '#00AA00';
+            button.style.color = '#ffffff';
+            button.addEventListener('click', addPress);
+        }
+        function createUl() {
+            const ul = document.createElement('ul');
+            body.prepend(ul);
+        }
+        function createLi(text) {
+            if (!text) {
+                console.log('No Text In Box.')
+                return;
+            }
+            console.log('Text in Box.')
+            const listItem = document.createElement('li');
+            const ul = document.querySelector('ul');
+            ul.appendChild(listItem);
+            listItem.innerHTML = text;
+            listItem.style.fontSize = '40px';
+            listItem.style.listStyle = 'none';
+            const deleteButton = document.createElement('button');
+            listItem.prepend(deleteButton);
+            deleteButton.innerHTML = "X"
+            deleteButton.style.fontSize = '20px';
+            deleteButton.style.margin = '5px';
+            deleteButton.style.backgroundColor = '#aa0000';
+            deleteButton.addEventListener('click', deletePress)
+        }
+        function addPress() {
+            const input = body.querySelector('input');
+            console.log('Add Button.');
+            const value = input.value;
+            input.value = '';
+            createLi(value);
+        }
+        function deletePress() {
+            console.log('Delete Button.', this);
+            this.parentElement.remove();
+
+
+
+        }
+    </script>
+</body>
+</html>
