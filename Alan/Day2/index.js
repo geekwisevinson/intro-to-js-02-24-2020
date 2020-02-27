@@ -1,3 +1,26 @@
+const theme1 = ['blue', 'white', 'red'];
+const theme2 = ['teal', 'black', 'gold'];
+themeMe(theme1);
+
+function themeMe(arrayOfColors) {
+  const h1s = document.querySelectorAll('h1');
+  const lis = document.querySelectorAll('li');
+  const body = document.querySelectorAll('body');
+
+  h1s.forEach(function(item) {
+    item.style.backgroundColor = arrayOfColors[0];
+    item.style.color = arrayOfColors[0];
+  });
+  lis.forEach(function(item) {
+    item.style.backgroundColor = arrayOfColors[2];
+    item.style.color = arrayOfColors[2];
+  });
+  body.forEach(function(item) {
+    item.style.backgroundColor = arrayOfColors[0];
+    item.style.color = arrayOfColors[1];
+  });
+}
+
 createTitle('h1', 'Todo v2');
 createInput();
 createButton();
@@ -56,4 +79,16 @@ function createListItem(text) {
   li.innerHTML = text;
   li.style.fontSize = '40px';
   li.style.listStyleType = 'circle';
+  li.style.margin = '20px';
+  const deleteButton = document.createElement('button');
+  li.prepend(deleteButton);
+  deleteButton.innerHTML = 'X';
+  deleteButton.style.fontSize = '40px';
+  deleteButton.style.margin = '0 20px';
+  deleteButton.addEventListener('click', deleteClick);
+}
+
+function deleteClick() {
+  console.log('we should delete this', this);
+  this.parentElement.remove();
 }
