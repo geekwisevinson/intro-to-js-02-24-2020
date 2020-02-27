@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    <li>theme1</li>
+    <li>theme2</li>
+</ul>
+    <script>    
+        const theme1 = ['blue', 'white', 'red'];
+        const theme2 = ['teal','black','gold']; 
+
+        function themeMe (arrayofcolors) {
+            const h1s = document.querySelector('h1');
+            const li = document.querySelector('li');
+            const body = document.querySelector('body');
+
+            h1s.foreach( function (item) {
+                item.style.backgroundColor = arrayofcolors[0];
+                item.style.color = arrayofcolors[1];
+            });
+        }
+        
+         createTitle('h1', 'Todo');
+        createInput();
+        createButton();
+        createUl();
+        createListItem();
+     
+
+        function WhatWeLearnedHowToDo(){
+         console.log('create elements:', 'document.createElements(type)');
+         console.log('put element in its place', 'ANY-ELEMENT.appendChild(ANY-ELEMNET)');
+         console.log('change the text in any element', 'ANY-ELEMENT.innerHTML = "any text"');
+         console.log('change style', 'ANY-ELEMENT.style.ANY-CSS = ANY-VAlUE')
+         console.log('add listners', 'Any-ELEMENT.addEventListener(ANY-EVENT, ANY-FUNCTIONS)');
+         console.log('target or get an element', 'ANY-ELEMENT,queryselector(ANY-CSS-SELECTOR)');
+         console.log('delete element', 'ANY-ELEMENT.remove');
+        }
+
+        WhatWeKnowHowToDo();
+
+        function createButton(){
+         const button = document.createElement('button')
+         document.body.appendChild(button);
+         button.innerHTML = 'ADD'
+         button.style.fontSize = '40px'
+         button.style.backgroundColor = 'lime'
+         button.addEventListener('click', WhatToDoWhenButtonIsClicked);
+        }
+    
+        function createInput() {
+            const input = document.createElement('input');
+            document.body.appendChild(input); 
+            input.style.fontSize = '40px';
+            input,addEventListener('keydown', function (event){
+                console.log('event', event); 
+                if (event.code === 'enter') {
+                    WhatToDoWhenButtonIsClicked();
+                }
+            });
+        }
+
+        function createTitle(type, text){
+        const h1 = document.createElement(type);
+        document.body.prepend(h1);
+        h1.innerHTML = text;
+        
+        }
+
+        function WhatToDoWhenButtonIsClicked() {
+            const input = document.body.querySelector('input');
+            console.dir(input); 
+            console.log(input.value);
+            const value = input.value;
+            input.value = '';
+
+        }
+        function WhatToDoWhenDeleteButtonIsClicked() {
+            console.log('we should delete this', this);
+            this.parentElement.remove();
+        }
+
+        function createUl() {
+            const ulElement = document.createElement('ul');
+            document.body.appendChild(ulElement);
+        }
+
+        function createListItem(text) {
+            if (!text) {
+                console.log('made it in here instead')
+                return;      
+            }
+            console.log('made it !!')
+            const listItem = document.createElement('li');
+            const ul = document.querySelector('ul');
+            ul.appendChild(listItem);
+            listItem.innerHTML = text;
+            listItem.style.fontSize = '40px';
+            const deleteButton = document.createElement('button');
+            listItem.appendChild(deleteButton);
+            deleteButton.innerHTML = 'X';
+            deleteButton.style.fontSize = '35px';
+            deleteButton,addEventListener('click', WhatToDoWhenButtonIsClicked);
+        }
+
+    </script>
+
+    
+</body>
+</html>
