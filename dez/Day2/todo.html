@@ -17,7 +17,11 @@
         function whatWeKnowHowToDo() {
             console.log('create elements:', 'document.createElements(type)');
             console.log('put element in its place','ANY-ELEMENT.appendChild(ELEMENT)');
-            console.log('change text in an element', 'ANY-ELEMENT.innerHTML = "any text"')
+            console.log('change text in an element', 'ANY-ELEMENT.innerHTML = "any text"');
+            console.log('change style', 'ANY-ELEMENT.style.ANY-CSS = ANY-VALUE')
+            console.log('add listeners', 'ANY-ELEMENT.addEventListener(ANY-EVENT, ANY-FUNCTION)');
+            console.log('target or get an element', 'ANY-ELEMENT.querySelector(ANY-CSS-Selector)');
+            console.log('target or get elements', 'ANY-ELEMENT.querySelectorAll(ANY-CSS-Selector)');
         }
 
 
@@ -30,6 +34,7 @@
         // Button Style
         button.style.fontSize = '40px';
         button.style.backgroundColor= 'Lime';
+        button.addEventListener('click', whatToDoWhenButtonIsClicked);
     }
     function createInput() {
         const input = document.createElement('input');
@@ -41,6 +46,28 @@
         document.body.prepend(h1);
         h1.innerHTML = text;
     }
+
+    function whatToDoWhenButtonIsClicked() {
+        const input = document.body.querySelector('input');
+        console.dir(input);
+        console.log(input.value);
+        const value = input.value;
+        input.value = '';
+        createListItem(value);
+    }
+
+    function createUL () {
+        const ul = document.createElement('ul');
+        document.body.appendChild(ulElement);
+    }
+    function createListItem() {
+        const listItem = document.createElement ('li');
+        const ul = document.querySelector('ul');
+        ul.appendChild(listItem);
+        listItem, innerHTML = text;
+    }
+
+    createListItem()
     </script>
 </body>
 </html>
