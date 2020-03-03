@@ -1,6 +1,6 @@
 const theme1 = ['blue', 'white', 'red'];
 const theme2 = ['teal', 'black', 'gold'];
-themeMe(theme1);
+themeMe(theme2);
 
 function themeMe(arrayOfColors) {
   const h1s = document.querySelectorAll('h1');
@@ -9,14 +9,14 @@ function themeMe(arrayOfColors) {
 
   h1s.forEach(function(item) {
     item.style.backgroundColor = arrayOfColors[0];
-    item.style.color = arrayOfColors[0];
+    item.style.color = arrayOfColors[1];
   });
   lis.forEach(function(item) {
-    item.style.backgroundColor = arrayOfColors[2];
-    item.style.color = arrayOfColors[2];
+    item.style.backgroundColor = arrayOfColors[1];
+    item.style.color = arrayOfColors[0];
   });
   body.forEach(function(item) {
-    item.style.backgroundColor = arrayOfColors[0];
+    item.style.backgroundColor = arrayOfColors[2];
     item.style.color = arrayOfColors[1];
   });
 }
