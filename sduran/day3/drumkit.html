@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rat-a-tat-tat</title>
+</head>
+<body>
+    <button>Kick</button>
+    <button>Snare</button>
+    <button>Crash</button>
+    <script>
+        const kick = document.createElement('audio');
+        kick.src = "../../sounds/kick.mp3";
+        const snare = document.createElement('audio');
+        snare.src = "../../sounds/snare.mp3";
+        const crash =  document.createElement('audio');
+        crash.src = "../../sounds/crash.mp3";
+
+        const buttons = document.querySelectorAll('button');
+
+        buttons.forEach(function(item, i){
+            item.addEventListener('click', function(){
+                chooseSound(i);
+            });
+        });
+
+        document.addEventListener('keydown', function(event) {
+            switch (event.code){
+                case 'KeyK':
+                    chooseSound(0);
+                    break;
+                case 'KeyJ':
+                    chooseSound(1);
+                    break;
+                case 'KeyI':
+                    chooseSound(2);
+                    break;
+            }
+        });
+
+        function playSound(sound) {
+            sound.currentTime = 0;
+            sound.play();
+        }
+
+        function chooseSound(sound) {
+            switch (sound) {
+                case 0:
+                    playSound(kick);
+                    break;
+                case 1:
+                    playSound(snare);
+                    break;
+                case 2: 
+                    playSound(crash);
+                    break;
+            }
+
+        }
+    </script>
+</body>
+</html>
