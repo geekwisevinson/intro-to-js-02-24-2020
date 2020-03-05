@@ -2,35 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Title</title>
 </head>
 <body>
+
 <ul>
-    <li>theme1</li>
-    <li>theme2</li>
+    <p onclick="themeMe(theme1)">theme1</p>
+    <p onclick="themeMe(theme2)">theme2</p>
 </ul>
-    <script>    
+<script>    
+
+
+
         const theme1 = ['blue', 'white', 'red'];
         const theme2 = ['teal','black','gold']; 
+        themeMe(theme2);
 
         function themeMe (arrayofcolors) {
             const h1s = document.querySelector('h1');
             const li = document.querySelector('li');
             const body = document.querySelector('body');
 
-            h1s.foreach( function (item) {
+            h1s.forEach( function (item) {
                 item.style.backgroundColor = arrayofcolors[0];
                 item.style.color = arrayofcolors[1];
             });
+            li.forEach( function (item) {
+                item.style.backgroundColor = arrayofcolors[1];
+                item.style.color = arrayofcolors[0];
+            });
+            body.forEach( function (item) {
+                item.style.backgroundColor = arrayofcolors[2];
+                item.style.color = arrayofcolors[1];
+            })
+
         }
         
-         createTitle('h1', 'Todo');
+        createTitle('h1', 'Todo');
         createInput();
         createButton();
         createUl();
-        createListItem();
-     
-
         function WhatWeLearnedHowToDo(){
          console.log('create elements:', 'document.createElements(type)');
          console.log('put element in its place', 'ANY-ELEMENT.appendChild(ANY-ELEMNET)');
@@ -44,19 +55,21 @@
         WhatWeKnowHowToDo();
 
         function createButton(){
-         const button = document.createElement('button')
-         document.body.appendChild(button);
-         button.innerHTML = 'ADD'
-         button.style.fontSize = '40px'
-         button.style.backgroundColor = 'lime'
-         button.addEventListener('click', WhatToDoWhenButtonIsClicked);
+            // Button Creation
+            const button = document.createElement('button');
+            document.body.appendChild(button);
+            button.innerHTML = 'ADD';
+
+            // Button Style
+            button.style.fontSize = '40px';
+            button.style.backgroundColor = 'lime';
+            button.addEventListener('click', WhatToDoWhenButtonIsClicked);
         }
-    
         function createInput() {
             const input = document.createElement('input');
             document.body.appendChild(input); 
             input.style.fontSize = '40px';
-            input,addEventListener('keydown', function (event){
+            input,addEventListener('keydown', function (event) {
                 console.log('event', event); 
                 if (event.code === 'enter') {
                     WhatToDoWhenButtonIsClicked();
@@ -64,22 +77,20 @@
             });
         }
 
-        function createTitle(type, text){
+        function createTitle(type, text) {
         const h1 = document.createElement(type);
         document.body.prepend(h1);
         h1.innerHTML = text;
-        
         }
-
         function WhatToDoWhenButtonIsClicked() {
             const input = document.body.querySelector('input');
             console.dir(input); 
             console.log(input.value);
             const value = input.value;
             input.value = '';
-
+            createListItem(value);
         }
-        function WhatToDoWhenDeleteButtonIsClicked() {
+        function WhatToDoWhenDeleteIsClicked() {
             console.log('we should delete this', this);
             this.parentElement.remove();
         }
@@ -94,21 +105,40 @@
                 console.log('made it in here instead')
                 return;      
             }
-            console.log('made it !!')
+            console.log('made it !!');
             const listItem = document.createElement('li');
             const ul = document.querySelector('ul');
             ul.appendChild(listItem);
             listItem.innerHTML = text;
             listItem.style.fontSize = '40px';
             const deleteButton = document.createElement('button');
-            listItem.appendChild(deleteButton);
+            listItem.prepend(deleteButton);
+            listItem.style.margin = '20px';
+            listItem.style.listStyle = 'none';
             deleteButton.innerHTML = 'X';
             deleteButton.style.fontSize = '35px';
-            deleteButton,addEventListener('click', WhatToDoWhenButtonIsClicked);
+            deleteButton.style.margin = '0 20px';
+            deleteButton.addEventListener('click', WhatToDoWhenDeleteIsClicked);
         }
 
-    </script>
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>   
 </body>
 </html>
