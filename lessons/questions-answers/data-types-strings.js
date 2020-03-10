@@ -32,9 +32,9 @@ function getDataTypesStrings() {
         return `
             <h1>Data Types: Stings</h1>
             <p>Strings are written with quotes</p>
-            <p>Strings can have a single quotes  'a string with single quotes.'</p>
-            <p>Strings can be double quotes "a string with double quotes."</p>
-            <p>Strings can have backtick quotes \`a string with backtick quotes.\` </p>
+            <p>Strings can have a single quotes  <em>'a string with single quotes.'</em></p>
+            <p>Strings can be double quotes <em>"a string with double quotes."</em></p>
+            <p>Strings can have backtick quotes <em>\`a string with backtick quotes.\`</em> </p>
         `;
     }
 
