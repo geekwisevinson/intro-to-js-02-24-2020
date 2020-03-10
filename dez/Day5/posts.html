@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #status {
+            position: fixed;
+            font-size: 40px;
+        }
+        #wrapper {
+            width: 800px;
+            margin: 0 auto;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="status"> 0 | 0 </div>
+    <div id="wrapper"></div>
+    <script>
+
+        let arrayOfPosts = [];
+        const url = 'https://jsonplaceholder.typicode.com/users'
+        const postsPromise = fetch(url);
+
+        postsPromise.then (( res) => {
+            console.log(res);
+            return res.json();
+        }).then((jsonResponse)=> {
+            console.log(jsonResponse);
+            arrayOfPosts = jsonResponse;
+            createPost(arrayOfPosts[2])
+        });
+        
+        function createPost( postObject ) {
+            quantity++;
+            console.log(postObject);
+            const html = `
+            <h1>${postoObject.title}</h1>
+            `;
+            const el = document.createElement ('div');
+            el.innerHTML = html;
+            wrapper.appendChild(el);
+        }
+        function add10() {
+            for (let i = 0; 1 < 10; i++) {
+                createPost(arrayOfPosts)
+            }
+        }
+    </script>
+</body>
+</html>

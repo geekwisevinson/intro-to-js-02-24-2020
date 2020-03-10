@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        window.onscroll = yHandler;
+        let itemNumber = 0;
+        function yHandler() {
+            const wrap = document.querySelector('#wrap');
+            const contentHeight = wrap.offsetHeight;
+            const yOffset = window.pageYOffset;
+            const y = yOffset + window.innerHeight;
+
+            if (y >= contentHeight) {
+                itemNumber += 1;
+               addRandomEl();
+            }
+            const status = document.querySelector('#status');
+            status.innerHTML = contentHeight + " | " + y;
+        }
+
+        function addRandomEl() {
+            const colors = ['red', 'blue', 'yellow', 'purple', 'green', 'orange'];
+            wrap.innerHTML += `<div class="new-data" style="background-color: ${getRandomFromArray(colors)}">this is new data #${itemNumber}</div>`
+        }
+
+        function getRandomFromArray(someArray) {
+            const randomNumber = Math.floor(Math.random() * someArray.length);
+            return someArray[randomNumber];
+        }
+    </script>
+    <style>
+        #status {
+            position: fixed;
+            font-size: 30px;
+        }
+
+        #wrap {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .new-data {
+            background-color: red;
+            height: 2000px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="status"> 0 | 0</div>
+<div id="wrap">
+    <div style="height: 2000px; background-color: red"></div>
+
+</div>
+</body>
+</html>
