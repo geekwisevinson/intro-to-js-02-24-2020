@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope</title>
+    <style>
+        .selected {
+            position: relative;
+            margin: .1px;
+            padding: .1px;
+        }
+        .selectedBoxTop {
+            position: absolute;
+            top: 0;
+            height: 4px;
+            width: 100%;
+            background-color: lime;
+        }
+        .selectedBoxLeft {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 4px;
+            background-color: lime;
+        }
+        .selectedBoxBottom {
+            position: absolute;
+            bottom: 0;
+            height: 4px;
+            width: 100%;
+            background-color: lime;
+        }
+        .selectedBoxRight {
+            position: absolute;
+            right: 0;
+            height: 100%;
+            width: 4px;
+            background-color: lime;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+    // Global Context
+    const globalData = {
+        selected: null,
+        body: {
+            children: [
+                {
+                    type: 'div',
+                    children: [
+                        {
+                            type: 'div',
+                            children: [
+                                {
+                                    type: 'h1',
+                                    innerHTML: 'this is text',
+                                    children: [],
+                                    style: {
+                                        backgroundColor: 'red',
+                                    },
+                                }
+                            ],
+                            style: {
+                                backgroundColor: 'blue',
+                                flex: '3',
+                                height: '400px'
+                            },
+                        },
+                        {
+                            type: 'div',
+                            children: [{
+                                type: 'h3',
+                                innerHTML: 'Selected item',
+                                style: {
+                                    backgroundColor: 'yellow',
+                                    width: '300px',
+                                    height: '400px'
+                                },
+                            }],
+                            style: {
+                                backgroundColor: 'yellow',
+                                width: '300px',
+                                height: '400px'
+                            },
+                        },
+
+                    ],
+                    style: {
+                        backgroundColor: 'red',
+                        width: '100%',
+                        display: 'flex',
+                    },
+                },
+                {
+                    type: 'h1',
+                    innerHTML: 'this is text',
+                    children: [],
+                    style: {
+                        backgroundColor: 'red',
+                    },
+                },
+                {
+                    type: 'p',
+                    innerHTML: 'this is text',
+                },
+                {
+                    type: 'ul',
+                    children: [
+                        {
+                            type: 'li',
+                            innerHTML: 'i am an li'
+                        }
+                    ],
+                }
+            ],
+            type: 'body'
+        }
+    };
+
+
+    function createBody() {
+        globalData.body.element = document.querySelector('body');
+        globalData.body.element.innerHTML = '';
+        const body = globalData.body;
+        body.children.forEach( child => {
+            createElement(child, globalData.body);
+            console.log(child);
+        })
+
+    }
+    function createElement(object, parent) {
+        object.element = document.createElement(object.type);
+        parent.element.appendChild(object.element);
+
+        if (object.innerHTML)
+        object.element.innerHTML = object.innerHTML;
+
+        if (object.children)
+        object.children.forEach( child => {
+            createElement(child, object);
+        });
+
+        if (object.style) {
+            const keys = Object.keys(object.style);
+            keys.forEach( key => {
+                object.element.style[key] = object.style[key];
+            })
+        }
+    }
+
+    createBody();
+
+    function addSelectElementListener(start) {
+        start.children.forEach( child => {
+            child.element.addEventListener('click', function () {
+                addBox(child);
+            })
+        })
+    }
+    console.log('test', globalData.body.children[0].children[0]);
+    addSelectElementListener(globalData.body.children[0].children[0]);
+    function addBox(child) {
+        console.log('add box');
+        if (!globalData.selected) {
+            console.log('add');
+            const parent = child.element.parentElement;
+
+            const tempSelected = document.createElement('div');
+            const tempSelectedBoxTop = document.createElement('div');
+            const tempSelectedBoxLeft = document.createElement('div');
+            const tempSelectedBoxBottom = document.createElement('div');
+            const tempSelectedBoxRight = document.createElement('div');
+            parent.insertBefore(tempSelected, child.element);
+
+            tempSelected.appendChild(tempSelectedBoxTop);
+            tempSelected.appendChild(tempSelectedBoxLeft);
+            tempSelected.appendChild(tempSelectedBoxBottom);
+            tempSelected.appendChild(tempSelectedBoxRight);
+            tempSelected.appendChild(child.element);
+
+            tempSelected.classList.add('selected');
+            tempSelectedBoxTop.classList.add('selectedBoxTop');
+            tempSelectedBoxLeft.classList.add('selectedBoxLeft');
+            tempSelectedBoxBottom.classList.add('selectedBoxBottom');
+            tempSelectedBoxRight.classList.add('selectedBoxRight');
+
+            tempSelected.style.display = getComputedStyle(child.element).display;
+            globalData.selected = child;
+        } else {
+            console.log('else');
+            const parent = globalData.selected.element.parentElement.parentElement;
+
+            const temp = child.element.parentElement;
+            parent.insertBefore(child.element, child.element.parentElement);
+            temp.remove();
+
+            globalData.selected = null;
+
+        }
+    }
+
+
+</script>
+</body>
+</html>
