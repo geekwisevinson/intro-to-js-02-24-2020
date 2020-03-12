@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Feed</title>
+    <style>
+        #status {
+            position: fixed;
+            font-size: 40px;
+            color: transparent;
+        }
+        #wrapper {
+            width: 800px;
+            margin: 0 auto;
+            border: 5px solid black;
+        }
+        .post {
+            border: 4px solid green;
+            margin: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="status"> 0 | 0 </div>
+<div id="wrapper"></div>
+
+<script>
+    let quantity = 0;
+    const wrapper = document.querySelector('#wrapper');
+    const status = document.querySelector('#status');
+    let arrayOfPosts = [];
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    const postsPromise = fetch(url);
+    postsPromise.then( (res) => {
+        console.log(res);
+        return res.json();
+    }).then( (jsonResponse) => {
+        console.log(jsonResponse);
+        arrayOfPosts = jsonResponse;
+        add10();
+    });
+
+    function createPost( postObject ) {
+        quantity += 1;
+        console.log(postObject);
+        const html = `
+            <h1>${postObject.title}</h1>
+        `;
+        const el = document.createElement('div');
+        el.classList.add('post');
+        el.innerHTML = html;
+        wrapper.appendChild(el);
+    }
+
+    function add10() {
+        for (let i = 0; i < 10; i++) {
+            createPost(arrayOfPosts[i + quantity ])
+        }
+    }
+
+
+    function yHandler() {
+        const contentHeight = wrapper.offsetHeight;
+        const yOffset = window.pageYOffset;
+        const y = yOffset + window.innerHeight;
+        console.log('scrolled', contentHeight, y);
+        if (y > contentHeight) {
+            add10();
+        }
+
+        status.innerHTML = `${contentHeight} | ${Math.round(y)}`;
+    }
+
+    window.addEventListener('scroll', yHandler)
+
+</script>
+</body>
+</html>
