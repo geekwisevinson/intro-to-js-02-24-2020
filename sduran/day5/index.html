@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="status">0 | 0</div>
+    <div id="wrap"></div>    
+
+    <script>
+        let postCount = 0;
+        let displayed = 0;
+        const wrap = document.getElementById("wrap");
+        const status = document.getElementById("status");
+        let arrayOfPosts = [];
+        const url = 'https://jsonplaceholder.typicode.com/posts';
+        const postsPromise = fetch(url);
+
+        postsPromise.then((res) => {
+            console.log(res); 
+            return res.json();
+        }).then((jsonResponse) => {
+            console.log(jsonResponse);
+            arrayOfPosts = jsonResponse;
+            yHandler();
+        });
+
+        function createPost(postObject) {
+            const html = `
+                <h1>${postObject.title}</h1>
+                <p>${postObject.body}</p>
+            `;
+            const el = document.createElement('div');
+            el.classList.add('post');
+            el.innerHTML = html;
+            wrap.appendChild(el);
+        }
+
+        function displayNext10() {
+            const tenth = postCount + 10;
+            for(let i = postCount; i < arrayOfPosts.length && i < tenth; i++) {
+                createPost(arrayOfPosts[i]);
+                postCount++;
+            }
+        }
+
+        function yHandler() {
+            const contentHeight = wrap.offsetHeight;
+            const y = window.pageYOffset + window.innerHeight;
+
+            if (y > contentHeight) {
+                displayNext10();
+            }
+
+            status.innerHTML = `${Math.floor(100 * y / contentHeight)} | 100%`;
+        }
+
+        window.addEventListener('scroll', yHandler);
+    </script>
+</body>
+</html>
