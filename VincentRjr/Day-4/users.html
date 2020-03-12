@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USERS</title>
+</head>
+<body>
+
+    <script>
+        const promise = new promise(function (resolve, respect) {
+            setTimeout(function ()
+            {
+                resolve('hello');
+            }, 3000);
+        });
+
+        promise.then(function (result) {
+            console.log(result);
+        });
+
+       const myFetchPromise = fetch('https://jsonplaceholder.typicode.com/users')
+       myFetchPromise.then(function (result) {
+           return result.json();
+       }).then( function (newResult) {
+           const myArray = [...newResult]
+           newResult.sort(function (first, second) {
+               if (first > second) {
+                   return -1;
+               } else {
+                   return 1;
+               }
+           });
+           whatToDoWithUserArray(newResult);
+       });
+
+       function whatToDoWithUserArray( users ) {
+
+           users.forEach(function loopFunction(item, index, array) {
+               console.log(item);
+               whatToDoWithASingleUser(item);
+
+           });
+
+       }
+
+       function whatToDoWithASingleUser( singleUser) {
+           const el = document.createElement('div');
+           el.innerHTML = singleUser.username;
+           document.body.appendChild(el);
+       }
+
+
+
+
+
+
+    </script>
+</body>
+</html>
