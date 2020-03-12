@@ -7,7 +7,7 @@
         #status {
             position: fixed;
             font-size: 40px;
-            color: transparent;
+            /*color: transparent;*/
         }
         #wrapper {
             width: 800px;
@@ -26,11 +26,14 @@
 <div id="wrapper"></div>
 
 <script>
-    let quantity = 0;
+    let quantityOfPostsLoaded = 0;
+
     const wrapper = document.querySelector('#wrapper');
     const status = document.querySelector('#status');
+
     let arrayOfPosts = [];
     const url = 'https://jsonplaceholder.typicode.com/posts';
+
     const postsPromise = fetch(url);
     postsPromise.then( (res) => {
         console.log(res);
@@ -39,10 +42,11 @@
         console.log(jsonResponse);
         arrayOfPosts = jsonResponse;
         add10();
+        yHandler();
     });
 
     function createPost( postObject ) {
-        quantity += 1;
+        quantityOfPostsLoaded += 1;
         console.log(postObject);
         const html = `
             <h1>${postObject.title}</h1>
@@ -55,7 +59,7 @@
 
     function add10() {
         for (let i = 0; i < 10; i++) {
-            createPost(arrayOfPosts[i + quantity ])
+            createPost(arrayOfPosts[i + quantityOfPostsLoaded ])
         }
     }
 
@@ -69,10 +73,11 @@
             add10();
         }
 
-        status.innerHTML = `${contentHeight} | ${Math.round(y)}`;
+        status.innerHTML = ` ${ Math.floor(  y / contentHeight * 100 ) }   `;
     }
 
     window.addEventListener('scroll', yHandler)
+
 
 </script>
 </body>
