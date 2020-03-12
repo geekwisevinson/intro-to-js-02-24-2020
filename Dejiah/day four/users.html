@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body > div {
+
+        }
+    </style>
+</head>
+<body>
+<input type="text">
+<script>
+    debugger;
+    let myArray = [];
+    const myFetchPromise = fetch('https://jsonplaceholder.typicode.com/users', {method: 'GET'});
+    // waits to get data from server
+    myFetchPromise.then(function (result) {
+        return result.json();
+    }).then( function (newResult) {
+        debugger;
+        newResult.sort(function (item1, item2) {
+            if (item1.username < item2.username) {
+                return -1
+            } else {
+                return 1;
+            }
+        });
+        //  myArray = newResult.filter(function (item) {
+        //     if (item.username[0].toLowerCase() === 'k' || item.username[0].toLowerCase() === 'm') {
+        //         return true;
+        //     }
+        // });
+        myArray = newResult;
+        whatToDoWithUserArray(myArray);
+    });
+    function whatToDoWithUserArray( users ) {
+        users.forEach(function loopFunction(item, index, array) {
+          whatToDoWithASingleUser(item);
+        });
+    }
+    function whatToDoWithASingleUser( singleUser) {
+        debugger;
+        const el = document.createElement('div');
+        el.innerHTML = `
+        <div>
+        <h1>${singleUser.username}</h1>
+        <ul>
+        <li>email: ${singleUser.email}</li>
+        <li>website: <a href="${singleUser.website}">${singleUser.website}</a></li>
+</ul>
+</div>
+        `;
+        document.body.appendChild(el);
+    }
+
+</script>
+</body>
+</html>
