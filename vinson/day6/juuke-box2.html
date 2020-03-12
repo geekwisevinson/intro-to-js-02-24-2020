@@ -26,7 +26,6 @@
         }
         .info {
             grid-area: info;
-            background-color: blue;
         }
 
         .left ul {
@@ -38,6 +37,8 @@
         }
         .left span {
             font-size: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .main img{
@@ -73,53 +74,7 @@
     </p>
 </div>
 
-<script>
-    // Target
-    // ul song list
-    const songListUl = document.querySelector('.left ul');
-    // main img
-    const mainImg = document.querySelector('.main img');
-    // main audio
-    const mainAudio = document.querySelector('.main audio');
-    // info paragraph
-    const infoP = document.querySelector('.info p');
-    const songs = [
-        {
-            title: 'song 1',
-            fileName: 'audio1.mp3',
-            imgPath: 'https://source.unsplash.com/random',
-            info: 'this is the first song I ever made.'
-        },
-        {
-            title: 'song 2',
-            fileName: 'audio2.mp3',
-            imgPath: 'https://source.unsplash.com/random',
-            info: 'this is the second song I ever made.'
-        },
-        {
-            title: 'song 3',
-            fileName: 'audio2.mp3',
-            imgPath: 'https://source.unsplash.com/random',
-            info: 'this is the second song I ever made.'
-        },
-    ];
-
-    function addSongToLi( song ) {
-        console.log('add song to li', song);
-        const li = document.createElement('li');
-        songListUl.appendChild(li);
-        console.log('songUl', songListUl);
-        li.innerHTML = `<img width="80" height="80" src="${song.imgPath}" alt=""> <span>${song.title}</span>`
-    }
-
-
-    songs.forEach( function (song, index) {
-        addSongToLi( songs[index] );
-    });
-
-    // for ( let i = 0; i < songs.length; i++) {
-    //     addSongToLi(songs[i]);
-    // }
+<script src="copy.js">
 </script>
 </body>
 </html>
