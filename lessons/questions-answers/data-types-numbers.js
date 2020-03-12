@@ -31,9 +31,9 @@ function getDataTypesNumbers() {
     function getInstructions() {
         return `
             <h1>Data Types: Numbers</h1>
-            <p>Numbers are written without quotes 127</p>
-            <p>Numbers can have a decimal 1.27</p>
-            <p>Numbers can be negative -12.7</p>
+            <p>Numbers are written without quotes <em>127</em></p>
+            <p>Numbers can have a decimal <em>1.27</em></p>
+            <p>Numbers can be negative <em>-12.7</em></p>
             <p>write a number</p>
         `;
     }
