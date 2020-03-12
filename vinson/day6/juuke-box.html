@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            display: grid;
+            grid-template-areas: "left main main main"
+                                 "left main main main"
+                                 "left info info info";
+        }
+        .left {
+            grid-area: left;
+            background-color: red;
+        }
+        .main {
+            grid-area: main;
+            background-color: black;
+        }
+        .info {
+            grid-area: info;
+            background-color: blue;
+        }
+
+        .left ul {
+            list-style: none;
+        }
+        .left li {
+            display: flex;
+        }
+        .left span {
+            font-size: 30px;
+        }
+
+        .main img{
+            height: 300px;
+            width: 300px;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .info {
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="left">
+    <ul>
+        <li>
+           <img width="80" height="80" src="https://source.unsplash.com/random" alt=""> <span>title of the song</span>
+        </li>
+    </ul>
+</div>
+<div class="main">
+    <img src="https://source.unsplash.com/random" alt="">
+    <audio src="audio1.mp3" controls></audio>
+</div>
+<div class="info">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam blanditiis consequatur doloribus eaque excepturi illo inventore labore, laborum, minus perferendis quasi reprehenderit sapiente soluta unde voluptas. Aliquam amet ea quaerat?
+    </p>
+</div>
+
+</body>
+</html>
