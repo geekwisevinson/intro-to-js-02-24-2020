@@ -34,6 +34,7 @@
         }
         .left li {
             display: flex;
+            margin-bottom: 40px;
         }
         .left span {
             font-size: 30px;
@@ -58,7 +59,7 @@
 <div class="left">
     <ul>
         <li>
-           <img width="80" height="80" src="https://source.unsplash.com/random" alt=""> <span>title of the song</span>
+
         </li>
     </ul>
 </div>
@@ -82,7 +83,6 @@
     const mainAudio = document.querySelector('.main audio');
     // info paragraph
     const infoP = document.querySelector('.info p');
-    console.log(songListUl, mainImg, mainAudio, infoP);
     const songs = [
         {
             title: 'song 1',
@@ -90,8 +90,36 @@
             imgPath: 'https://source.unsplash.com/random',
             info: 'this is the first song I ever made.'
         },
+        {
+            title: 'song 2',
+            fileName: 'audio2.mp3',
+            imgPath: 'https://source.unsplash.com/random',
+            info: 'this is the second song I ever made.'
+        },
+        {
+            title: 'song 3',
+            fileName: 'audio2.mp3',
+            imgPath: 'https://source.unsplash.com/random',
+            info: 'this is the second song I ever made.'
+        },
     ];
 
+    function addSongToLi( song ) {
+        console.log('add song to li', song);
+        const li = document.createElement('li');
+        songListUl.appendChild(li);
+        console.log('songUl', songListUl);
+        li.innerHTML = `<img width="80" height="80" src="${song.imgPath}" alt=""> <span>${song.title}</span>`
+    }
+
+
+    songs.forEach( function (song, index) {
+        addSongToLi( songs[index] );
+    });
+
+    // for ( let i = 0; i < songs.length; i++) {
+    //     addSongToLi(songs[i]);
+    // }
 </script>
 </body>
 </html>
