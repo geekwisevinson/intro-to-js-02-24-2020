@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        const on = 'https://w3schools.com/js/pic_bulbon.gif'
+        const off = 'https://w3schools.com/js/pic_bulboff.gif';
+        document.addEventListener('DOMContentLoaded', function () {
+
+
+            // runs when page is loaded
+            const button = document.querySelector('button');
+            console.log(button);
+
+
+
+
+
+
+
+        });
+
+        function toggleLight() {
+            const img = document.querySelector('img');
+            if (img.src === off) {
+                img.src = on;
+            } else {
+                img.src = off;
+            }
+        }
+    </script>
+</head>
+<body>
+<img src="https://w3schools.com/js/pic_bulboff.gif" alt="">
+<button onclick="toggleLight()">Click</button>
+
+
+</body>
+</html>
