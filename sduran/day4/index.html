@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <input type="text" id="textbox" value="" >
+    <div class="content"></div>
+
+    <script>
+        usersJson = fetch('https://jsonplaceholder.typicode.com/users')
+            .then(result => Promise.resolve(result.json()))
+        let input = document.getElementById("textbox");
+        usersJson.then(users => handleUserArray(users));
+        input.addEventListener("keyup", function(event){
+            usersJson.then(handleUserArray)
+        });
+
+        content = document.querySelector(".content");
+        
+        function handleUserArray(users) {
+            users.sort(function (first, second) {
+                if (first.username < second.username) {
+                    return -1;
+                }
+                return 1;
+            });
+
+            content.innerHTML = "";
+            users.filter(function(item) {
+                if(item.name.slice(0,input.value.length).toLowerCase() === input.value.toLowerCase()) {
+                    console.log("Filtering");
+                    console.log(item.name.slice(0, input.value.length).toLowerCase());
+                    console.log(input.value.toLowerCase());
+                    return true;
+                }
+            }).forEach(function(item) {
+                createUserHtml(item);
+            });
+        }
+
+
+        function createUserHtml(user) {
+            const el = document.createElement('div');
+            el.setAttribute("class", "user");
+            el.appendChild(createUserElement("Username:   " + user.username));
+            el.appendChild(createUserElement("Name:   " + user.name));
+            el.appendChild(createUserElement("Email: " + user.email));
+            content.appendChild(el);
+        }
+
+        function createUserElement(element) {
+            let p = document.createElement("p");
+            p.innerHTML = element;
+            return p;
+        }
+
+        function fizzBuzz(n) {
+            for(let i = 1; i <= n; i++) {
+                if (i % 3 === 0) {
+                    if(i % 5 === 0) {
+                        console.log("FizzBuzz " + i);
+                    }
+                    else {
+                        console.log("Fizz " + i);
+                    }
+                }
+                else if (i % 5 ===0) {
+                    console.log("Buzz " + i);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
