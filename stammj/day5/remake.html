@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="thing"></div>
+    <div id="wrapper"></div>
+
+    <script>
+        let quantity = 0
+        const wrapper = document.querySelector('#wrapper')
+        const thing = document.querySelector('#thing')
+        const url = 'http://jsonplaceholder.typicode.com/posts';
+        let postArray = [];
+        const postPromise = fetch(url);
+        postsPromise.then ( (res) => {
+            return res.json();
+        }).then ((jsonResponse) => {
+            postArray = jsonResponse;
+            addTen ();
+        })
+       function createPost (postObj) {
+            quantity++;
+            const html = `
+            <h1>${postObj.title}</h1>
+            `;
+            const el = document.createElement('div');
+            el.innerHTML = html;
+            wrapper.appendChild(el);
+        }
+        function addTen () {
+            for (let i = 0; i < 10; i++) {
+                createPost (postArray[i + quantity]);
+            }
+            function yHandler() {
+            const contentHeight = wrapper.offsetHeight;
+            const yoffset = window.pageYOffset;
+            const y = yoffset + window.innerHeight;
+            console.log('scroll', contentHeight, y);
+            if (y > contentHeight) {
+                addFive ();
+            }
+        }}
+    </script>
+</body>
+</html>

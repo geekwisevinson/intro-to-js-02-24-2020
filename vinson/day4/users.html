@@ -15,12 +15,14 @@
 <body>
 <input type="text">
 <script>
+    debugger;
     let myArray = [];
-    const myFetchPromise = fetch('https://jsonplaceholder.typicode.com/users');
+    const myFetchPromise = fetch('https://jsonplaceholder.typicode.com/users', {method: 'GET'});
     // waits to get data from server
     myFetchPromise.then(function (result) {
         return result.json();
     }).then( function (newResult) {
+        debugger;
         newResult.sort(function (item1, item2) {
             if (item1.username < item2.username) {
                 return -1
@@ -42,6 +44,7 @@
         });
     }
     function whatToDoWithASingleUser( singleUser) {
+        debugger;
         const el = document.createElement('div');
         el.innerHTML = `
         <div>

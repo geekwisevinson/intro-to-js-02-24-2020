@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Feed</title>
+    <style>
+        #status {
+            position: fixed;
+            font-size 40px;
+        }
+        #wrapper {
+            width: 800px;
+            margin: 0 auto;
+            border: 5px solid black;
+        }
+        .post {
+            border: 4px solid green;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="status">0 | 0</div>
+    <div id="wrapper"></div>
+
+
+    <script>
+        let quantity = 0;
+        const wrapper = document.querySelector('#wrapper')
+        let postArray = [];
+        const url = 'http://jsonplaceholder.typicode.com/posts';
+        const postPromise = fetch(url);
+        postPromise.then( (res) => {
+            console.log(res);
+            return res.json();
+        }).then ( (jsonResponse) => {
+            postArray = jsonResponse;
+            addFive ();
+        });
+        function createPost (postObj) {
+            quantity++;
+            const html = `
+            <h1>${postObj.title}</h1>
+                `;
+                const el = document.createElement('div');
+                el.classList.add('post')
+                el.innerHTML = html;
+                wrapper.appendChild(el);
+        }
+
+        function addFive () {
+            for (let i = 0; i < 10; i++) {
+                createPost (postArray[i + quantity]);
+
+            }
+        }
+        function yHandler() {
+            const contentHeight = wrapper.offsetHeight;
+            const yoffset = window.pageYOffset;
+            const y = yoffset + window.innerHeight;
+            console.log('scroll', contentHeight, y);
+            if (y > contentHeight) {
+                addFive ();
+
+            }
+        }
+        window.addEventListener('scroll', yHandler)
+        
+    </script>
+</body>
+</html>
